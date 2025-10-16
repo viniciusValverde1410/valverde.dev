@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Tektur';
+  src: url('/fonts/Tektur-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tektur';
+  src: url('/fonts/Tektur-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +27,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  font-family: 'Tektur', sans-serif;
 }
 
 ::-webkit-scrollbar {

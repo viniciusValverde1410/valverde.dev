@@ -1,45 +1,114 @@
+"use client";
+
+import React from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
+import { useForm, ValidationError } from '@formspree/react';
+
+
 
 export default function Home() {
+
+  function ContactForm() {
+  const [state, handleSubmit] = useForm("mjkalkdq");
+  if (state.succeeded) {
+      return <p className={styles.successMessage}> Mensagem enviada com sucesso! Obrigado pelo contato!</p>;
+  }
+  return (
+    <form onSubmit={handleSubmit} className={styles.contactForm}>
+      <div className={styles.formGroup}>
+        <label htmlFor="name" className={styles.formLabel}>
+          Nome
+        </label>
+        <input
+          id="name"
+          type="text" 
+          name="name"
+          placeholder="Seu nome completo"
+          className={styles.formInput}
+          required
+        />
+        <ValidationError 
+          prefix="Nome" 
+          field="name"
+          errors={state.errors}
+          className={styles.errorText}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="email" className={styles.formLabel}>
+          Email
+        </label>
+        <input
+          id="email"
+          type="email" 
+          name="email"
+          placeholder="seu@email.com"
+          className={styles.formInput}
+          required
+        />
+        <ValidationError 
+          prefix="Email" 
+          field="email"
+          errors={state.errors}
+          className={styles.errorText}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="message" className={styles.formLabel}>
+          Mensagem
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Escreva sua mensagem aqui..."
+          className={styles.formTextarea}
+          required
+        />
+        <ValidationError 
+          prefix="Mensagem" 
+          field="message"
+          errors={state.errors}
+          className={styles.errorText}
+        />
+      </div>
+
+      <button type="submit" disabled={state.submitting} className={styles.submitButton}>
+        {state.submitting ? 'Enviando...' : 'Enviar Mensagem'}
+      </button>
+    </form>
+  );
+}
+
   const technologies = [
-    { name: 'JavaScript', color: 'linear-gradient(135deg, #f7df1e 0%, #f0db4f 100%)' },
-    { name: 'Next.js', color: 'linear-gradient(135deg, #000000 0%, #434343 100%)' },
-    { name: 'React', color: 'linear-gradient(135deg, #61dafb 0%, #21a1c4 100%)' },
-    { name: 'Node.js', color: 'linear-gradient(135deg, #68a063 0%, #3c7a34 100%)' },
-    { name: 'SQLite', color: 'linear-gradient(135deg, #0f80cc 0%, #07648d 100%)' },
-    { name: 'Tailwind CSS', color: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)' },
-    { name: 'TypeScript', color: 'linear-gradient(135deg, #3178c6 0%, #235a97 100%)' },
-    { name: 'Git', color: 'linear-gradient(135deg, #f05033 0%, #c23a28 100%)' },
+    { name: 'Git', badge: 'https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white' },
+    { name: 'JavaScript', badge: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black' },
+    { name: 'HTML5', badge: 'https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white' },
+    { name: 'CSS3', badge: 'https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white' },
+    { name: 'PostgreSQL', badge: 'https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white' },
+    { name: 'SQLite', badge: 'https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white' },
+    { name: 'Postman', badge: 'https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white' },
+    { name: 'Node.js', badge: 'https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white' },
+    { name: 'Prisma', badge: 'https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white' },
+    { name: 'React', badge: 'https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black' },
+    { name: 'React Native', badge: 'https://img.shields.io/badge/React_Native-61DAFB?style=flat-square&logo=react&logoColor=black' },
+    { name: 'Next.js', badge: 'https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white' },
+    { name: 'Axios', badge: 'https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white' },
   ];
 
   const projects = [
     {
-      title: 'Projeto Portfolio',
-      description: 'Landing page moderna e responsiva desenvolvida com Next.js, React e CSS Modules. Design profissional com animações suaves e experiência de usuário otimizada.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-      technologies: ['Next.js', 'React', 'CSS Modules'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/viniciusValverde1410',
-    },
-    {
-      title: 'Sistema Web',
-      description: 'Aplicação web completa com backend em Node.js e frontend em React. Integração com banco de dados SQLite para persistência de dados.',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=500&h=300&fit=crop',
-      technologies: ['React', 'Node.js', 'SQLite'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/viniciusValverde1410',
-    },
-    {
-      title: 'Dashboard Interativo',
-      description: 'Interface moderna para visualização de dados com gráficos interativos e design responsivo. Implementação de melhores práticas de UX/UI.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-      technologies: ['JavaScript', 'React', 'CSS'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/viniciusValverde1410',
-    },
+      title: 'SCCPedia - Corinthians Web',
+      description: 'Plataforma completa com Next.js e React consumindo API própria. Exibe elenco atual, lendas históricas, títulos conquistados, história do clube e formulário de contato integrado com Formspree. Design responsivo com carousels interativos.',
+      image: '/images/corinthians.png',
+      technologies: ['Next.js', 'React', 'Axios'],
+      liveUrl: 'https://corinthians-web-pi.vercel.app/',
+      githubUrl: 'https://github.com/viniciusValverde1410/corinthiansWeb.git',
+    }
   ];
 
   return (
@@ -78,12 +147,23 @@ export default function Home() {
             <Link href="https://github.com/viniciusValverde1410" target="_blank" rel="noopener noreferrer" className={styles.btnGithub}>
               GitHub
             </Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.btnLinkedin}>
+            <Link href="https://www.linkedin.com/in/vin%C3%ADcius-valverde-b987a8339/" target="_blank" rel="noopener noreferrer" className={styles.btnLinkedin}>
               LinkedIn
             </Link>
-            <Link href="mailto:contato@valverde.dev" className={styles.btnContact}>
+            <Link href="#contato" className={styles.btnContact}>
               Contato
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.projects}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Projetos</h2>
+          <div className={styles.projectGrid}>
+            {projects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
           </div>
         </div>
       </section>
@@ -111,29 +191,53 @@ export default function Home() {
         </div>
       </section>
 
+      <section className={styles.education}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Formação</h2>
+          <div className={styles.educationCard}>
+            <div className={styles.educationIcon}>
+              🎓
+            </div>
+            <div className={styles.educationContent}>
+              <h3 className={styles.educationTitle}>Desenvolvimento de Sistemas</h3>
+              <p className={styles.educationInstitution}>SENAI</p>
+              <p className={styles.educationStatus}>🚀 Em andamento</p>
+              <p className={styles.educationDescription}>
+                Formação técnica completa em desenvolvimento de sistemas, abrangendo programação, 
+                banco de dados, desenvolvimento web, mobile e desktop. Aplicação prática de 
+                metodologias ágeis e boas práticas de engenharia de software.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.technologies}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Tecnologias</h2>
           <div className={styles.techGrid}>
             {technologies.map((tech, index) => (
-              <div key={index} className={styles.techCard}>
-                <div className={styles.techIcon} style={{ background: tech.color }}>
-                  <span className={styles.techLetter}>{tech.name.charAt(0)}</span>
-                </div>
-                <h3 className={styles.techName}>{tech.name}</h3>
+              <div key={index} className={styles.techBadge}>
+                <img
+                  src={tech.badge}
+                  alt={tech.name}
+                  className={styles.badgeImage}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.projects}>
+      <section id="contato" className={styles.contact}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Projetos</h2>
-          <div className={styles.projectGrid}>
-            {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
+          <h2 className={styles.sectionTitle}>Contato</h2>
+          <div className={styles.contactCard}>
+            <p className={styles.contactText}>
+              Estou sempre disponível para novos projetos e oportunidades. Se você quer conversar sobre desenvolvimento,
+              colaborações ou apenas trocar uma ideia, ficarei feliz em responder!
+            </p>
+                <ContactForm />
           </div>
         </div>
       </section>
@@ -154,11 +258,6 @@ export default function Home() {
               <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <svg className={styles.socialIcon} fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </Link>
-              <Link href="mailto:contato@valverde.dev" className={styles.socialLink}>
-                <svg className={styles.socialIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </Link>
             </div>

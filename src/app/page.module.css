@@ -180,58 +180,103 @@
   margin-bottom: 0;
 }
 
+.education {
+  padding: 80px 16px;
+}
+
+.educationCard {
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 48px;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.educationCard:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+}
+
+.educationIcon {
+  font-size: 64px;
+  flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.educationContent {
+  flex: 1;
+}
+
+.educationTitle {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.educationInstitution {
+  color: rgba(196, 181, 253, 1);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.educationStatus {
+  color: rgba(134, 239, 172, 1);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 6px;
+}
+
+.educationDescription {
+  color: rgba(209, 213, 219, 1);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+
 .technologies {
   padding: 80px 16px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .techGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
   justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.techCard {
-  background: rgba(31, 41, 55, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 24px;
-  border: 1px solid rgba(107, 114, 128, 0.3);
+.techBadge {
   transition: all 0.3s ease;
-  width: 160px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.techCard:hover {
-  border-color: rgba(168, 85, 247, 0.5);
-  transform: scale(1.05);
+.techBadge:hover {
+  transform: translateY(-4px);
 }
 
-.techIcon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.techLetter {
-  font-size: 28px;
-  font-weight: 700;
-  color: white;
-}
-
-.techName {
-  color: white;
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0;
-  text-align: center;
+.badgeImage {
+  display: block;
+  height: 35px;
+  width: auto;
 }
 
 .projects {
@@ -249,6 +294,228 @@
 .projectGrid>* {
   width: 100%;
   max-width: 380px;
+}
+
+.contact {
+  padding: 80px 16px;
+}
+
+.contactCard {
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 48px;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.contactText {
+  font-size: 18px;
+  color: rgba(209, 213, 219, 1);
+  line-height: 1.7;
+  margin: 0 0 40px 0;
+  text-align: center;
+}
+
+.contactMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(55, 65, 81, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.contactMethod:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+}
+
+.contactIcon {
+  width: 40px;
+  height: 40px;
+  color: rgba(196, 181, 253, 1);
+  flex-shrink: 0;
+}
+
+.methodTitle {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.methodDesc {
+  color: rgba(209, 213, 219, 1);
+  font-size: 16px;
+  margin: 0;
+}
+
+.contactForm {
+  max-width: 600px;
+  margin: 40px auto 0;
+}
+
+.formGroup {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.formLabel {
+  display: block;
+  color: rgba(196, 181, 253, 1);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(31, 41, 55, 0.8);
+  border: 2px solid rgba(107, 114, 128, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.formInput:hover,
+.formTextarea:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(31, 41, 55, 0.9);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 1);
+  background: rgba(31, 41, 55, 1);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15),
+              0 10px 25px rgba(168, 85, 247, 0.2);
+  transform: translateY(-2px);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: rgba(156, 163, 175, 0.5);
+}
+
+.formTextarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 1) 0%, rgba(126, 34, 206, 1) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, rgba(126, 34, 206, 1) 0%, rgba(109, 40, 217, 1) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(147, 51, 234, 0.6);
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.submitButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 20px rgba(147, 51, 234, 0.5);
+}
+
+.submitButton:disabled {
+  background: rgba(107, 114, 128, 0.4);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.submitButton:disabled::before {
+  display: none;
+}
+
+.successMessage {
+  text-align: center;
+  color: rgba(134, 239, 172, 1);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+  border: 2px solid rgba(34, 197, 94, 0.4);
+  border-radius: 12px;
+  animation: slideIn 0.5s ease-out;
+}
+
+.errorText {
+  color: rgba(252, 165, 165, 1);
+  font-size: 13px;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .footer {
@@ -342,5 +609,25 @@
 @media (min-width: 1024px) {
   .projectGrid>* {
     width: calc(33.333% - 22px);
+  }
+}
+
+@media (max-width: 767px) {
+  .educationCard {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .educationIcon {
+    font-size: 48px;
+  }
+
+  .educationTitle {
+    font-size: 24px;
+  }
+
+  .educationInstitution {
+    font-size: 18px;
   }
 }
